@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>晓彤</title>
+	<script>
+		window.onload=function(){
+			runtime();
+		}
+	</script>
 </head>
 <style>
     /*Sakura animation using WebGL. No images are used. The framerate might be slow or the demo might not play at all in some older systems so you can watch this video: http://www.screenr.com/BFZ8. Let me make it clear that I did not make this and just thought is was very cool and wanted to share it.
@@ -33,7 +38,10 @@ span{
     font-size: 55px;
 }
 p{
-    font-size: 22px;
+    font-size: 21px;
+}
+#runtime{
+	font-size:20px;
 }
 </style>
 <body>
@@ -41,13 +49,37 @@ p{
     <div class="btnbg">
         <div >
             <span>晓彤</span>
-            <p>幸得识卿桃花面，<br/>从此阡陌多暖春。</p>
+            <p id="text"></p>
 			<p>——2026——</p>
-			<frame src="https://www.cnblogs.com/songzhixue/p/11261118.html"></frame>
+			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="https://music.163.com/outchain/player?type=2&id=2032661389&auto=1&height=66"></iframe>
+			<p id="runtime"></p>
         </div>
     <!-- <button type="button" onclick="toggleAnimation(this)">Stop</button> -->
     </div>
-
+<script type="text/javascript">
+    	function runtime() {
+		var startDate = new Date("2026/07/15 00:00:00"); // 设置网站建站时间
+		var now = new Date();
+		var diff = now.getTime() - startDate.getTime();
+		var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+		var hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+		var minutes = Math.floor((diff / (1000 * 60)) % 60);
+		var seconds = Math.floor((diff / 1000) % 60);
+		document.getElementById("runtime").innerHTML =
+		"<b>本站已运行: " + days + "天 " + hours + "小时 " + minutes + "分 " + seconds + "秒</b";
+	}
+	setInterval(runtime, 1000);
+	
+	const text = "幸得识卿桃花面,从此阡陌多暖春。";
+        let index = 0;
+        const interval = setInterval(() => {
+            document.getElementById('text').innerHTML += text[index];
+            index++;
+            if (index === text.length) {
+                clearInterval(interval);
+            }
+        }, 500);
+</script>
 <!-- sakura shader -->
 <script id="sakura_point_vsh" type="x-shader/x_vertex">
 uniform mat4 uProjection;

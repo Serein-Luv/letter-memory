@@ -1,14 +1,43 @@
-<!doctype html>
-<html lang="zh">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/letter-memory/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>STAY CURIOUS - 保持好奇，永远折腾</title>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet">  <script type="module" crossorigin src="/letter-memory/assets/index-CcphoFTP.js"></script>
-  <link rel="stylesheet" crossorigin href="/letter-memory/assets/index-Bb2dX1iz.css">
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>浅野未晞 - 404</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;background:linear-gradient(135deg,#f5f7fa,#e8ecf1,#f0f2f5);font-family:"PingFang SC","Microsoft YaHei",sans-serif;overflow:hidden;position:relative}
+canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:5}
+.container{text-align:center;z-index:10;padding:40px}
+.error-code{font-size:clamp(120px,30vw,300px);font-weight:900;color:#2c3e50;line-height:1;margin-bottom:20px;text-shadow:2px 2px 8px rgba(0,0,0,.1);letter-spacing:-8px}
+.error-message{font-size:clamp(18px,4vw,28px);color:#666;margin-bottom:40px;font-weight:300;letter-spacing:2px}
+.home-btn{display:inline-block;padding:15px 40px;background:linear-gradient(135deg,#ffb6c1,#ffc0cb);color:#fff;text-decoration:none;border-radius:30px;font-size:16px;font-weight:500;transition:all .3s ease;box-shadow:0 4px 15px rgba(255,182,193,.4)}
+.home-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,182,193,.6)}
+.title{position:fixed;top:30px;left:50%;transform:translateX(-50%);font-size:18px;color:#999;letter-spacing:4px;font-weight:300;z-index:20}
+@media(max-width:768px){.container{padding:20px}.error-code{letter-spacing:-4px}.title{font-size:14px;top:20px}}
+</style>
 </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<body>
+<canvas id="petals"></canvas>
+<div class="title">浅野未晞</div>
+<div class="container">
+<div class="error-code">404</div>
+<div class="error-message">页面未找到</div>
+<a href="/" class="home-btn">返回首页</a>
+</div>
+<script>
+var canvas=document.getElementById("petals");
+var ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+var petals=[];
+function Petal(){this.x=Math.random()*canvas.width;this.y=-20;this.size=Math.random()*15+8;this.speedY=Math.random()*1.5+0.5;this.speedX=Math.random()*1-0.5;this.rotation=Math.random()*360;this.rotationSpeed=Math.random()*2-1;this.opacity=Math.random()*0.5+0.5}
+Petal.prototype.draw=function(){ctx.save();ctx.translate(this.x,this.y);ctx.rotate(this.rotation*Math.PI/180);ctx.fillStyle="rgba(255,182,193,"+this.opacity+")";ctx.beginPath();ctx.ellipse(0,0,this.size,this.size/2,0,0,Math.PI*2);ctx.fill();ctx.restore()};
+Petal.prototype.update=function(){this.y+=this.speedY;this.x+=this.speedX+Math.sin(this.y*0.01)*0.5;this.rotation+=this.rotationSpeed;if(this.y>canvas.height+20)return false;return true};
+for(var i=0;i<50;i++){petals.push(new Petal());petals[petals.length-1].y=Math.random()*canvas.height}
+function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);petals=petals.filter(function(p){return p.update()});petals.forEach(function(p){p.draw()});if(petals.length<50)petals.push(new Petal());requestAnimationFrame(animate)}
+animate();
+window.addEventListener("resize",function(){canvas.width=window.innerWidth;canvas.height=window.innerHeight})
+</script>
+</body>
 </html>

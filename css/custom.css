@@ -3,3 +3,25 @@
 .post-body {
   font-family: 'Noto Serif SC', serif;
 }
+
+/* Mobile layout fixes */
+@media (max-width: 767px) {
+  .main-inner {
+    width: auto !important;
+    max-width: 100% !important;
+    margin: 5px !important;
+    padding: 15px 10px !important;
+  }
+  .header.header {
+    padding: 15px 10px;
+  }
+  .menu {
+    padding: 0.5em 0;
+  }
+  .menu-item {
+    margin: 0 8px;
+  }
+  .footer {
+    position: relative;
+  }
+}

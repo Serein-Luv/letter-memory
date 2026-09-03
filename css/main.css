@@ -1383,7 +1383,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #49d2ff;
+  background: #e8b4ff;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -1804,6 +1804,67 @@ pre code {
   }
   50%, 70% {
     transform: scale(1.1);
+  }
+}
+@media (max-width: 567px) {
+  .main-inner {
+    padding: initial !important;
+  }
+  .posts-expand .post-header {
+    margin-bottom: 10px !important;
+  }
+  .post-block {
+    margin-top: initial !important;
+    padding: 8px 18px 8px !important;
+  }
+  .post-body h1,
+  .post-body h2,
+  .post-body h3,
+  .post-body h4,
+  .post-body h5,
+  .post-body h6 {
+    margin: 20px 0 8px;
+  }
+  .post-body .note h1,
+  .post-body .tabs .tab-content .tab-pane h1,
+  .post-body .note h2,
+  .post-body .tabs .tab-content .tab-pane h2,
+  .post-body .note h3,
+  .post-body .tabs .tab-content .tab-pane h3,
+  .post-body .note h4,
+  .post-body .tabs .tab-content .tab-pane h4,
+  .post-body .note h5,
+  .post-body .tabs .tab-content .tab-pane h5,
+  .post-body .note h6,
+  .post-body .tabs .tab-content .tab-pane h6 {
+    margin: 0 5px;
+  }
+  .post-body > p {
+    margin: 0 0 10px;
+  }
+  .post-body .note > p,
+  .post-body .tabs .tab-content .tab-pane > p {
+    padding: 0 5px;
+  }
+  .post-body img,
+  .post-body video {
+    margin-bottom: 10px !important;
+  }
+  .post-body figure:not(.highlight) figcaption {
+    margin: -5px auto 15px !important;
+  }
+  .post-body .note {
+    margin-bottom: 10px !important;
+    padding: 10px !important;
+  }
+  .post-body .tabs .tab-content .tab-pane {
+    padding: 10px 10px 0 !important;
+  }
+  .post-eof {
+    margin: 40px auto 20px !important;
+  }
+  .pagination {
+    margin-top: 40px;
   }
 }
 .back-to-top {
@@ -2712,15 +2773,23 @@ hr {
   }
 }
 body {
-  background: url("https://raw.githubusercontent.com/Serein-Luv/letter-memory/refs/heads/main/images/bg.jpg") no-repeat center center fixed;
+  background: url("/images/bg.jpg") no-repeat fixed center;
   background-size: cover;
 }
 .main-inner {
   margin: 10px auto !important;
   width: 700px !important;
+  max-width: 100% !important;
   background: rgba(255,255,255,0.8) !important;
   padding: 20px 15px !important;
   border-radius: 15px !important;
+}
+@media (max-width: 767px) {
+  .main-inner {
+    margin: 5px !important;
+    padding: 15px 10px !important;
+    border-radius: 10px !important;
+  }
 }
 .posts-expand.index .post-block {
   margin-bottom: 30px;
@@ -2734,6 +2803,29 @@ body {
 .post-body {
   font-family: 'Noto Serif SC', serif;
 }
+
+/* Mobile layout fixes */
+@media (max-width: 767px) {
+  .main-inner {
+    width: auto !important;
+    max-width: 100% !important;
+    margin: 5px !important;
+    padding: 15px 10px !important;
+  }
+  .header.header {
+    padding: 15px 10px;
+  }
+  .menu {
+    padding: 0.5em 0;
+  }
+  .menu-item {
+    margin: 0 8px;
+  }
+  .footer {
+    position: relative;
+  }
+}
+
 .column {
   background: var(--content-bg-color);
 }
